@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Portfolio of Jannatul Mawa Protiva, an international student who builds simple, useful web tools.">
+<title>Jannatul Mawa Protiva | Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky name bar with section links, a left-aligned hero with a monogram, then sections as simple blocks and project cards. */
+:root {
+  --bg: #F6F3FA;
+  --surface: #FFFFFF;
+  --fg: #231634;
+  --muted: #5F5575;
+  --line: #DDD5EA;
+  --accent: #5B2A9D;
+  --accent-fg: #FFFFFF;
+  --gold: #E8A20C;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #150E22; --surface: #1F1631; --fg: #F1EBFA; --muted: #B3A7CC; --line: #33264D; --accent: #B58CFF; --accent-fg: #150E22; --gold: #FFC24D; }
+}
+:root[data-theme="dark"] { --bg: #150E22; --surface: #1F1631; --fg: #F1EBFA; --muted: #B3A7CC; --line: #33264D; --accent: #B58CFF; --accent-fg: #150E22; --gold: #FFC24D; }
+:root[data-theme="light"] { --bg: #F6F3FA; --surface: #FFFFFF; --fg: #231634; --muted: #5F5575; --line: #DDD5EA; --accent: #5B2A9D; --accent-fg: #FFFFFF; --gold: #E8A20C; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px);
+}
+.skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--accent-fg); padding: 8px 12px; border-radius: 8px; z-index: 50; }
+.skip:focus { left: 8px; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.bar { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.bar-in { max-width: 960px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 8px 20px; flex-wrap: wrap; }
+.logo { font-family: var(--font-display); font-weight: 700; text-decoration: none; color: var(--fg); letter-spacing: -0.02em; }
+nav { display: flex; gap: 4px 6px; flex-wrap: wrap; }
+nav a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; padding: 6px 10px; border-radius: 99px; }
+nav a:hover { background: var(--surface); color: var(--fg); }
+main { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+section { padding: 56px 0 8px; }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.03em; line-height: 1.1; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(38px, 9vw, 72px); }
+h2 { font-size: clamp(26px, 5vw, 38px); margin-bottom: 20px; }
+h3 { font-size: 21px; letter-spacing: -0.02em; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 40px; align-items: center; padding-top: 48px; }
+@media (max-width: 640px) { .hero { grid-template-columns: minmax(0, 1fr); } }
+.role { font-size: 20px; color: var(--muted); margin: 14px 0 0; }
+.intro { max-width: 60ch; margin: 18px 0 0; }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+.btn { display: inline-block; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 10px; border: 2px solid var(--accent); }
+.btn.fill { background: var(--accent); color: var(--accent-fg); }
+.btn.line { color: var(--accent); }
+.btn:hover { filter: brightness(1.1); }
+.mono { width: clamp(120px, 26vw, 200px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-fg); font-family: var(--font-display); font-weight: 700; font-size: clamp(44px, 10vw, 72px); letter-spacing: -0.04em; box-shadow: 10px 10px 0 var(--gold); max-width: 100%; }
+@media (max-width: 640px) { .mono { width: 110px; font-size: 40px; box-shadow: 6px 6px 0 var(--gold); } }
+.notice { font-size: 14px; color: var(--muted); margin-top: 28px; padding: 10px 14px; border: 1px dashed var(--line); border-radius: 8px; max-width: 60ch; }
+.text { max-width: 62ch; margin: 0 0 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tags li { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 5px 14px; font-size: 15px; }
+.groups { display: grid; gap: 22px; }
+.groups h3 { font-size: 16px; font-family: var(--font-data); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card p { margin: 0; color: var(--muted); font-size: 16px; }
+.card .tags li { font-size: 13px; padding: 3px 10px; }
+.card a.go { font-weight: 600; text-decoration: none; }
+.card a.go:hover { text-decoration: underline; }
+.contact-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.contact-list a { font-weight: 600; overflow-wrap: anywhere; }
+footer { max-width: 960px; margin: 64px auto 0; padding: 22px 20px 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+footer p { margin: 0 0 6px; max-width: 70ch; }
+.tgl { font: inherit; font-size: 14px; font-weight: 600; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 6px 14px; cursor: pointer; }
+.tgl:hover { border-color: var(--accent); }
+.bar-r { display: flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; }
+.hi { font-family: var(--font-data); font-size: 14px; color: var(--muted); margin: 0 0 14px; }
+.rot { color: var(--accent); font-weight: 500; display: inline-block; min-width: 9ch; }
+.live { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 20px; font-size: 15px; color: var(--muted); }
+.live .dot { width: 9px; height: 9px; border-radius: 50%; background: #2DBE7B; box-shadow: 0 0 0 4px rgba(45,190,123,0.2); flex: none; }
+.marq { overflow: hidden; border-block: 1px solid var(--line); background: var(--surface); margin-top: 44px; }
+.marq-in { display: flex; gap: 40px; width: max-content; padding: 14px 0; font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; white-space: nowrap; animation: slide 30s linear infinite; }
+.marq-in span:nth-child(even) { color: var(--gold); }
+@keyframes slide { to { transform: translateX(-50%); } }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; margin: 0 0 8px; padding: 0; list-style: none; counter-reset: s; }
+.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; counter-increment: s; }
+.steps li::before { content: counter(s); display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--accent-fg); font-family: var(--font-display); font-weight: 700; margin-bottom: 10px; }
+.steps b { display: block; font-family: var(--font-display); font-size: 18px; margin-bottom: 4px; }
+.steps span { color: var(--muted); font-size: 15px; }
+.tl { list-style: none; margin: 28px 0 0; padding: 0 0 0 20px; border-left: 2px solid var(--line); }
+.tl li { position: relative; padding: 0 0 20px 16px; }
+.tl li::before { content: ""; position: absolute; left: -29px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg); }
+.tl time { font-family: var(--font-data); font-size: 13px; color: var(--muted); display: block; }
+.tl b { font-family: var(--font-display); font-size: 18px; }
+.tl span { display: block; color: var(--muted); font-size: 15px; }
+.card { transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--gold); }
+.prog { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: var(--gold); z-index: 30; }
+.up { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--accent); color: var(--accent-fg); font-size: 22px; cursor: pointer; box-shadow: 4px 4px 0 var(--gold); z-index: 20; }
+.up[hidden] { display: none; }
+.clocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.clocks li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; text-align: center; }
+.clocks b { display: block; font-family: var(--font-display); font-size: 26px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.clocks span { display: block; color: var(--muted); font-size: 14px; }
+.clocks small { font-family: var(--font-data); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.clocks .day b { color: var(--fg); }
+.clocks .night b { color: var(--accent); }
+.copy { font: inherit; font-weight: 600; margin-top: 18px; background: transparent; border: 2px solid var(--accent); color: var(--accent); border-radius: 10px; padding: 10px 16px; cursor: pointer; }
+.copy:hover { filter: brightness(1.1); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .marq-in { animation: none; } .card { transition: none; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="bar"><div class="bar-in">
+  <a class="logo" href="#home" id="logo"></a>
+  <div class="bar-r"><nav id="nav" aria-label="Sections"></nav><button class="tgl" id="tgl" type="button" aria-label="Switch between light and dark theme">Theme</button></div>
+</div></header>
+
+<main id="main"></main>
+<footer id="foot"></footer>
+<button class="up" id="up" type="button" aria-label="Back to top" hidden>&uarr;</button>
+
+<script>
+/* ---------------------------------------------------------------
+   EDIT HERE. Change the text between the quote marks.
+   Any section you leave empty ("" or []) is hidden automatically.
+---------------------------------------------------------------- */
+var ME = {
+  name: "Jannatul Mawa Protiva",
+  short: "Protiva",
+  role: "International student at Pacific States University",
+  intro: "I'm an international student who likes making simple, useful web tools: a clock for checking the time back home, a budget tracker, a restaurant dashboard and a small game site.",
+
+  about: [
+    "I'm an international student at Pacific States University. I like turning everyday problems into small, simple websites that anyone can open and use.",
+    "My projects so far include a clock that shows the time back home, a budget tracker for students, a small game site, and a dashboard that shows how a restaurant could track its sales and profit. I'm still learning, and I build each one step by step."
+  ],
+  education: [{ school: "Pacific States University" }],    /* you can add program and years: { school: "...", program: "Your program", years: "2025 to now" } */
+  skills: [
+    { group: "Technology", items: ["Building simple websites (HTML, CSS, JavaScript) with AI help", "GitHub Pages"] },
+    { group: "Professional", items: ["Problem solving", "Working across time zones"] },
+    { group: "Currently learning", items: ["Computational logic", "Python basics", "Publishing websites on GitHub"] }
+  ],    /* add more, for example: { group: "Languages", items: ["English", "Bengali"] } */
+
+  projects: [
+    { title: "Homeclock", text: "Shows the time where I study and at home, and tells me when it is a good time to call.", tags: ["HTML", "CSS", "JavaScript"], link: "https://protiva123bd-debug.github.io/homeclock/" },
+    { title: "Playbreak", text: "A small game site with memory match, a reaction test and a number guessing game.", tags: ["HTML", "CSS", "JavaScript"], link: "https://protiva123bd-debug.github.io/playbreak/" },
+    { title: "Daybook", text: "A dashboard for a restaurant that tracks sales, cash and card income, costs and profit.", tags: ["HTML", "CSS", "JavaScript"], link: "" },
+    { title: "Hishab", text: "A monthly budget tracker for students, with an exchange rate to see what is left in your home currency.", tags: ["HTML", "CSS", "JavaScript"], link: "" }
+  ],
+
+  world: [
+    { city: "Los Angeles", zone: "America/Los_Angeles" },
+    { city: "New York", zone: "America/New_York" },
+    { city: "London", zone: "Europe/London" },
+    { city: "Dhaka", zone: "Asia/Dhaka" },
+    { city: "Tokyo", zone: "Asia/Tokyo" },
+    { city: "Sydney", zone: "Australia/Sydney" }
+  ],
+
+  process: [
+    { title: "Start with a real problem", text: "Checking the time back home, tracking a budget, or seeing how a restaurant is doing." },
+    { title: "Build it with AI help", text: "I describe what I want, then Claude helps me write the page and I look it over." },
+    { title: "Test it and put it online", text: "I try it myself, fix what is confusing, then publish it on GitHub Pages." }
+  ],
+  timeline: [
+    { date: "Oct 20, 2026", title: "Hishab", text: "My first project: a budget tracker for students." },
+    { date: "Oct 20, 2026", title: "Homeclock", text: "A clock to check the time back home and find when to call." },
+    { date: "Oct 22, 2026", title: "GitHub Pages", text: "Learned how to publish a website with my own link." },
+    { date: "Oct 22, 2026", title: "Playbreak and Daybook", text: "A game site and a restaurant sales dashboard." },
+    { date: "Oct 22, 2026", title: "This portfolio", text: "All my work in one place." }
+  ],
+
+  contact: {
+    email: "",      /* example: "yourname@gmail.com" */
+    github: "https://github.com/protiva123bd-debug",
+    linkedin: ""    /* example: "https://www.linkedin.com/in/yourname" */
+  }
+};
+</script>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function h(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function safe(url) { return /^https?:\/\//i.test(url) ? url : ""; }
+
+  var initials = ME.name.split(/\s+/).filter(Boolean).map(function (w) { return w[0]; });
+  var mono = (initials[0] || "") + (initials[initials.length - 1] || "");
+  document.title = ME.name + " | Portfolio";
+  $("logo").textContent = ME.name;
+
+  var main = $("main"), navItems = [["home", "Home"]];
+
+  /* home */
+  var home = h("section", "hero"); home.id = "home";
+  var left = h("div");
+  var hi = h("p", "hi"); hi.append("Hi, I'm Protiva. I'm a ");
+  var rot = h("span", "rot", "student"); hi.append(rot, ".");
+  var words = ["student", "web builder", "problem solver", "time zone traveler"], wi = 0;
+  if (!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    setInterval(function () { wi = (wi + 1) % words.length; rot.textContent = words[wi]; }, 2000);
+  }
+  left.append(hi, h("h1", "", ME.name), h("p", "role", ME.role), h("p", "intro", ME.intro));
+  var btns = h("div", "btns");
+  var b1 = h("a", "btn fill", "View my work"); b1.href = "#projects";
+  var b2 = h("a", "btn line", "Get in touch"); b2.href = "#contact";
+  var b3 = h("button", "btn line", "Surprise me"); b3.type = "button"; b3.style.cursor = "pointer"; b3.style.font = "inherit"; b3.style.fontWeight = "600"; b3.style.background = "transparent";
+  b3.addEventListener("click", function () {
+    var live = ME.projects.filter(function (x) { return safe(x.link); });
+    if (!live.length) { location.hash = "projects"; return; }
+    var pick = live[Math.floor(Math.random() * live.length)];
+    window.open(pick.link, "_blank", "noopener");
+  });
+  btns.append(b1, b2, b3); left.appendChild(btns);
+  var live = h("div", "live"); var dot = h("span", "dot"); dot.setAttribute("aria-hidden", "true");
+  var lt = h("span"); live.append(dot, lt); left.appendChild(live);
+  function tickTime() { lt.textContent = "Hello from Pacific States University. Your local time is " + new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }) + "."; }
+  tickTime(); setInterval(tickTime, 20000);
+  left.appendChild(h("p", "notice", "This is a personal student website. It is not an official website of any school."));
+  var m = h("div", "mono", mono); m.setAttribute("aria-hidden", "true");
+  home.append(left, m); main.appendChild(home);
+  var mq = h("div", "marq"); mq.setAttribute("aria-hidden", "true"); var mi = h("div", "marq-in");
+  var names = ME.projects.map(function (x) { return x.title; });
+  for (var rpt = 0; rpt < 8; rpt++) names.forEach(function (n) { mi.appendChild(h("span", "", n)); });
+  mq.appendChild(mi); main.appendChild(mq);
+
+  function section(id, label, eyebrow, title) {
+    var s = h("section"); s.id = id;
+    s.append(h("p", "eyebrow", eyebrow), h("h2", "", title));
+    main.appendChild(s); navItems.push([id, label]); return s;
+  }
+
+  if (ME.about && ME.about.length) {
+    var a = section("about", "About", "About me", "A little about me");
+    ME.about.forEach(function (t) { a.appendChild(h("p", "text", t)); });
+  }
+  if (ME.education && ME.education.length) {
+    var e = section("education", "Education", "Education", "Where I study");
+    var ec = h("div", "cards");
+    ME.education.forEach(function (x) {
+      var c = h("div", "card"); c.append(h("h3", "", x.school || ""));
+      if (x.program) c.appendChild(h("p", "", x.program));
+      if (x.years) c.appendChild(h("p", "", x.years));
+      ec.appendChild(c);
+    });
+    e.appendChild(ec);
+  }
+  if (ME.skills && ME.skills.length) {
+    var sk = section("skills", "Skills", "Skills", "What I can do");
+    var g = h("div", "groups");
+    ME.skills.forEach(function (grp) {
+      var d = h("div"); d.appendChild(h("h3", "", grp.group));
+      var ul = h("ul", "tags"); grp.items.forEach(function (i) { ul.appendChild(h("li", "", i)); });
+      d.appendChild(ul); g.appendChild(d);
+    });
+    sk.appendChild(g);
+  }
+  if (ME.projects && ME.projects.length) {
+    var p = section("projects", "Projects", "Projects", "Things I have built");
+    var pc = h("div", "cards");
+    ME.projects.forEach(function (x) {
+      var c = h("article", "card"); c.appendChild(h("h3", "", x.title)); c.appendChild(h("p", "", x.text));
+      var ul = h("ul", "tags"); (x.tags || []).forEach(function (t) { ul.appendChild(h("li", "", t)); }); c.appendChild(ul);
+      if (safe(x.link)) { var l = h("a", "go", "Open the live site →"); l.href = x.link; l.target = "_blank"; l.rel = "noopener"; c.appendChild(l); }
+      pc.appendChild(c);
+    });
+    p.appendChild(pc);
+  }
+
+  if (ME.world && ME.world.length) {
+    var wc = section("world", "World clock", "Time zones", "What time is it around the world?");
+    wc.appendChild(h("p", "text", "I like keeping track of time zones, so here is a live clock for a few cities."));
+    var wl = h("ul", "clocks"), wItems = [];
+    ME.world.forEach(function (c) {
+      var li = h("li"), t = h("b", "", ""), n = h("span", "", c.city), d = h("small", "", "");
+      li.append(t, n, d); wl.appendChild(li); wItems.push({ li: li, t: t, d: d, zone: c.zone });
+    });
+    wc.appendChild(wl);
+    var drawWorld = function () {
+      var now = new Date();
+      wItems.forEach(function (w) {
+        try {
+          w.t.textContent = now.toLocaleTimeString("en-US", { timeZone: w.zone, hour: "numeric", minute: "2-digit" });
+          var hr = parseInt(now.toLocaleTimeString("en-GB", { timeZone: w.zone, hour: "2-digit", hour12: false }), 10) % 24;
+          w.d.textContent = now.toLocaleDateString("en-US", { timeZone: w.zone, weekday: "short" }) + (hr >= 6 && hr < 18 ? " \u00B7 day" : " \u00B7 night");
+          w.li.className = hr >= 6 && hr < 18 ? "day" : "night";
+        } catch (e) { w.t.textContent = "-"; }
+      });
+    };
+    drawWorld(); setInterval(drawWorld, 15000);
+  }
+
+  if ((ME.process && ME.process.length) || (ME.timeline && ME.timeline.length)) {
+    var jr = section("journey", "Journey", "My journey", "How I build things");
+    if (ME.process && ME.process.length) {
+      var st = h("ol", "steps");
+      ME.process.forEach(function (x) { var li = h("li"); li.append(h("b", "", x.title), h("span", "", x.text)); st.appendChild(li); });
+      jr.appendChild(st);
+    }
+    if (ME.timeline && ME.timeline.length) {
+      jr.appendChild(h("h3", "", "My build log")).style.marginTop = "34px";
+      var tl = h("ol", "tl");
+      ME.timeline.forEach(function (x) { var li = h("li"); var t = h("time", "", x.date); li.append(t, h("b", "", x.title), h("span", "", x.text)); tl.appendChild(li); });
+      jr.appendChild(tl);
+    }
+  }
+
+  var C = ME.contact || {}, rows = [];
+  if (C.email) rows.push(["Email", "mailto:" + C.email, C.email]);
+  if (safe(C.github)) rows.push(["GitHub", C.github, C.github.replace(/^https?:\/\//, "")]);
+  if (safe(C.linkedin)) rows.push(["LinkedIn", C.linkedin, C.linkedin.replace(/^https?:\/\//, "")]);
+  if (rows.length) {
+    var ct = section("contact", "Contact", "Contact", "Let's talk");
+    ct.appendChild(h("p", "text", "Feel free to reach out about projects, study groups or opportunities."));
+    var ul = h("ul", "contact-list");
+    rows.forEach(function (r) {
+      var li = h("li"); li.appendChild(h("span", "eyebrow", r[0] + " "));
+      var a2 = h("a", "", r[2]); a2.href = r[1]; if (r[0] !== "Email") { a2.target = "_blank"; a2.rel = "noopener"; }
+      li.appendChild(a2); ul.appendChild(li);
+    });
+    ct.appendChild(ul);
+    var cp = h("button", "copy", "Copy link to this portfolio"); cp.type = "button";
+    cp.addEventListener("click", function () {
+      var done = function () { cp.textContent = "Link copied!"; setTimeout(function () { cp.textContent = "Copy link to this portfolio"; }, 2000); };
+      try { navigator.clipboard.writeText(location.href.split("#")[0]).then(done, function () { cp.textContent = "Copy the address from your browser bar"; }); }
+      catch (e) { cp.textContent = "Copy the address from your browser bar"; }
+    });
+    ct.appendChild(cp);
+  }
+
+  var nav = $("nav");
+  navItems.forEach(function (n) { var a3 = h("a", "", n[1]); a3.href = "#" + n[0]; nav.appendChild(a3); });
+
+  var dark = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches, root = document.documentElement;
+  $("tgl").addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme") || (dark ? "dark" : "light");
+    root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+  });
+
+  var up = $("up"), prog = $("prog");
+  window.addEventListener("scroll", function () {
+    var de = document.documentElement, max = de.scrollHeight - de.clientHeight;
+    prog.style.width = (max > 0 ? Math.min(100, de.scrollTop / max * 100) : 0) + "%";
+    up.hidden = de.scrollTop < 500;
+  }, { passive: true });
+  up.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+  var f = $("foot");
+  f.append(h("p", "", "© " + new Date().getFullYear() + " " + ME.name + ". Student portfolio."),
+           h("p", "", "These projects were built with help from Claude, an AI assistant made by Anthropic."));
+})();
+</script>
+</body>
+</html>
